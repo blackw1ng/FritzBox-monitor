@@ -11,7 +11,7 @@ Monitor FritzBox metrics via a telegraf/influxdb/grafana stack that reads data f
 
 ### Details
 * I decided that I want to parse the Fritzbox info via a single telegraf input.
-* Consequently, the [checkfritz.py](checkfritz.py) returns a `json` which can be easily disgested as [https://docs.influxdata.com/telegraf/v1.14/data_formats/input/json/](array)
+* Consequently, the [checkfritz.py](checkfritz.py) returns a `json` which can be easily disgested as [array](https://docs.influxdata.com/telegraf/v1.14/data_formats/input/json/)
 
 ## Background
 I have a FritzBox 7490 at home, which is connected to a vDSL 100/40 line - I was wondering regarding my traffic patterns, as well as things like connected WiFi clients, DSL line capacity and so on.
