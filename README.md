@@ -30,14 +30,15 @@ on how to do it... but all of those needed quite some extra work, or did not fit
 FritzBoxShell did not completely fetch all the information available, as described by https://avm.de/service/schnittstellen/, and the scripts provided with fritzconnection did needed modification as well, the collectd plugin (based on FritzConnection) requires of cause an collectd somewhere in LAN - and an accessible sink.
 
 ## Installation
+
 ### Pre-requisites
 
-### FritzBox
+#### FritzBox
 * Have a recent FritzOS - I have tested with FRITZ!OS 07.19 on a FritzBox 7490
 * Enable TR-064 on your fritzbox, and add a dedicated _monitoring_ user (see: https://www.schlaue-huette.de/apis-co/fritz-tr064/ )
 * Check from LAN, whether you can access http://fritz.box:49000/tr64desc.xml
 
-### Diskstation extras
+#### Diskstation extras
 * Have a Python 3 installation (install Python package) and fritzconnection running (this is quite a task):
   * Install _opkg_ as your package manager, probably best via EasyBootstrapInstaller (see: https://community.synology.com/enu/forum/1/post/127148 )
   * Have "python3-pip" and "python3-lxml" (to tackle the TR-064 SOAP) ready and installed (either installed via opkg, or via pip-bootstrap - have fun getting lxml running on the diskstation without opkg... as the headers are missing)
@@ -45,7 +46,7 @@ FritzBoxShell did not completely fetch all the information available, as describ
 * Create a _monitoring_ user via web-ui, have this one be an admin user (otherwise ssh-login does not work)
 * Add your monitoring servers telegraf ssh key to `~monitoring/.ssh/authorized_keys`
 
-### Monitoring server (in the internet)
+#### Monitoring server (in the internet)
 * Have a recent telegraf installation running
 * Have the local output configured, e.g. `[[outputs.influxdb]]`
 * Have grafana ready, to be able to read from said output
@@ -53,3 +54,12 @@ FritzBoxShell did not completely fetch all the information available, as describ
 * Configure telegraf to be able to ssh out with key-auth
   * Create an ssh-key for `~telegraf` , probably in `/etc/telegraf/.ssh/id_rsa` *without* passphrase, so it can be called from telegraf directly.
   * Check whether telegraf can log in to your diskstation (in the LAN) via keyauth
+
+### Actual installation
+* Copy [checkfritz.py](checkfritz.py) to your decoy host
+  * Adjust credentials
+  * Check it is executable & works: Log in to decoy host as the user, and `./checkfritz.py`
+* Integrate [telegraf-fritzbox.conf](telegraf-fritzbox.conf) into server grafana installation
+  * Test the config: `telegraf --filter inputs.exec --test`
+  * Restart grafana, and start collecting data  
+* Add [grafana-fritzbox-dashboard.json] to your server grafana installation
