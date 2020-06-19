@@ -23,7 +23,7 @@ I have a FritzBox 7490 at home, which is connected to a vDSL 100/40 line - I was
 ### My use case
 The special thing to mention is:
 * TR-064 is only accessible from the LAN (for good reasons, in terms of security)
-* My monitoring stack of influxDB etc runs on my server in Frankfurt - so the metrics need to get there safely and securly.
+* My monitoring stack of influxDB etc runs on my server in Frankfurt - so the metrics need to get there safely and securely.
 * Another open port on my server, e.g. for InfluxDB etc was not deemed acceptable
 * For security considerations, I prefer a "direct pull" of metrics, e.g. by telegraf
 * So, the _actual_ monitoring collector needs from a decoy host in the LAN, namely my diskstation or one of the raspis
@@ -31,12 +31,14 @@ The special thing to mention is:
 * LAN hosts can be securely / directly accessed by IPv6, and thanks to DNS updates, also carry AAAA entries.
 
 ### References
-I started looking around, and found a good number of projects and descriptions,  most notably:
+I started looking around, and found a good number of projects and descriptions, on how to do it...
+
 * https://github.com/kbr/fritzconnection
 * https://github.com/jhubig/FritzBoxShell
 * https://github.com/fetzerch/fritzcollectd
-on how to do it... but all of those needed quite some extra work, or did not fit my use case
-FritzBoxShell did not completely fetch all the information available, as described by https://avm.de/service/schnittstellen/, and the scripts provided with fritzconnection did needed modification as well, the collectd plugin (based on FritzConnection) requires of cause an collectd somewhere in LAN - and an accessible sink.
+
+All of those needed quite some extra work, or did not fit my use case directly...
+FritzBoxShell did not completely fetch all the information available, as described by https://avm.de/service/schnittstellen/, and the scripts provided with fritzconnection did need modification as well, the collectd plugin (based on FritzConnection) requires an collectd somewhere in LAN - and an accessible sink.
 
 ## Installation
 
