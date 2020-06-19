@@ -9,6 +9,8 @@ verify_ssl = true
 fritzconnection = "*"
 graph = "*"
 sys = "*"
+flake8 = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.7"

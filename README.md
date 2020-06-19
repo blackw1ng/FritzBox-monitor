@@ -1,9 +1,6 @@
 # FritzBox-monitor
 Monitor FritzBox metrics via a telegraf/influxdb/grafana stack that reads data from TR-064
 
-## Background
-I have a FritzBox 7490 at home, which is connected to a vDSL 100/40 line - I was wondering regarding my traffic patterns, as well as things like connected WiFi clients, DSL line capacity and so on.
-
 ## What you get....
 ![Grafana dashboard](grafana-fritzbox-dashboard.jpg?raw=true)
 * Includes current DSL rates, possible line rates (over time)
@@ -12,6 +9,13 @@ I have a FritzBox 7490 at home, which is connected to a vDSL 100/40 line - I was
 * Clients associated in WLAN2.4 / WLAN 5 & WLAN guest
 * DECT clients, active VOIP numbers
 
+### Details
+* I decided that I want to parse the Fritzbox info via a single telegraf input.
+* Consequently, the [checkfritz.py](checkfritz.py) returns a `json` which can be easily disgested as [https://docs.influxdata.com/telegraf/v1.14/data_formats/input/json/](array)
+
+## Background
+I have a FritzBox 7490 at home, which is connected to a vDSL 100/40 line - I was wondering regarding my traffic patterns, as well as things like connected WiFi clients, DSL line capacity and so on.
+
 ### My use case
 The special thing to mention is:
 * TR-064 is only accessible from the LAN (for good reasons, in terms of security)
@@ -19,6 +23,7 @@ The special thing to mention is:
 * Another open port on my server, e.g. for InfluxDB etc was not deemed acceptable
 * For security considerations, I prefer a "direct pull" of metrics, e.g. by telegraf
 * So, the _actual_ monitoring collector needs from a decoy host in the LAN, namely my diskstation or one of the raspis
+* I did not want to run an `ssh` command for every value
 * LAN hosts can be securely / directly accessed by IPv6, and thanks to DNS updates, also carry AAAA entries.
 
 ### References
