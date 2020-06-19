@@ -31,9 +31,9 @@ FritzBoxShell did not completely fetch all the information available, as describ
 
 ### Diskstation extras
 * Have a Python 3 installation (install Python package) and fritzconnection running (this is quite a task):
-** Install _opkg_ as your package manager, probably best via EasyBootstrapInstaller (see: https://community.synology.com/enu/forum/1/post/127148 )
-** Have "python3-pip" and "python3-lxml" (to tackle the TR-064 SOAP) ready and installed (either installed via opkg, or via pip-bootstrap - have fun getting lxml running on the diskstation without opkg... as the headers are missing)
-** Make sure you have the fritzconnection module: `pip install fritzconnections`
+  * Install _opkg_ as your package manager, probably best via EasyBootstrapInstaller (see: https://community.synology.com/enu/forum/1/post/127148 )
+  * Have "python3-pip" and "python3-lxml" (to tackle the TR-064 SOAP) ready and installed (either installed via opkg, or via pip-bootstrap - have fun getting lxml running on the diskstation without opkg... as the headers are missing)
+  * Make sure you have the fritzconnection module: `pip install fritzconnections`
 * Create a _monitoring_ user via web-ui, have this one be an admin user (otherwise ssh-login does not work)
 * Add your monitoring servers telegraf ssh key to `~monitoring/.ssh/authorized_keys`
 
@@ -41,6 +41,7 @@ FritzBoxShell did not completely fetch all the information available, as describ
 * Have a recent telegraf installation running
 * Have the local output configured, e.g. `[[outputs.influxdb]]`
 * Have grafana ready, to be able to read from said output
+  * Install the carpet-plot panel, to get fancy traffic analysis (bucket per time of day on y-axis, and day at x-axis, color is the intensity) https://grafana.com/grafana/plugins/petrslavotinek-carpetplot-panel 
 * Configure telegraf to be able to ssh out with key-auth
-** Create an ssh-key for `~telegraf` , probably in `/etc/telegraf/.ssh/id_rsa` *without* passphrase, so it can be called from telegraf directly.
-** Check whether telegraf can log in to your diskstation (in the LAN) via keyauth
+  * Create an ssh-key for `~telegraf` , probably in `/etc/telegraf/.ssh/id_rsa` *without* passphrase, so it can be called from telegraf directly.
+  * Check whether telegraf can log in to your diskstation (in the LAN) via keyauth

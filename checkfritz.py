@@ -75,9 +75,10 @@ print('\t{"box": "'+deviceinfo+'",')
 
 uptime = readout('DeviceInfo1','GetInfo','NewUpTime',show=True)
 version = readout('DeviceInfo1','GetInfo','NewDescription',show=True,numeric=False)
+dhcp_leases = readout('Hosts1','GetHostNumberOfEntries',show=True)
 
 
-print('\t"v": ', assemble(uptime,version) )
+print('\t"v": ', assemble(uptime,version,dhcp_leases) )
 print('\t}')
 
 ## tag list by box & interface
