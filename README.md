@@ -4,6 +4,14 @@ Monitor FritzBox metrics via a telegraf/influxdb/grafana stack that reads data f
 ## Background
 I have a FritzBox 7490 at home, which is connected to a vDSL 100/40 line - I was wondering regarding my traffic patterns, as well as things like connected WiFi clients, DSL line capacity and so on.
 
+## What you get....
+![Grafana dashboard](grafana-fritzbox-dashboard.jpg?raw=true)
+* Includes current DSL rates, possible line rates (over time)
+* Traffic on DSL line and LAN port (seems to only register LAN1 in TR-064)
+* Packets per second on WLAN, LAN and DSL
+* Clients associated in WLAN2.4 / WLAN 5 & WLAN guest
+* DECT clients, active VOIP numbers
+
 ### My use case
 The special thing to mention is:
 * TR-064 is only accessible from the LAN (for good reasons, in terms of security)
