@@ -1,4 +1,4 @@
-[![MIT license](https://img.shields.io/github/license/blackw1ng/FritzBox-monitor)](https://opensource.org/licenses/MIT)
+[![MIT license](https://img.shields.io/github/license/blackw1ng/FritzBox-monitor?color=blue)](https://opensource.org/licenses/MIT)
 [![made-with-python](https://img.shields.io/badge/Python-3.7%2C%203.8-green)](https://www.python.org)
 ![Python application](https://github.com/blackw1ng/FritzBox-monitor/workflows/Python%20application/badge.svg)
 
