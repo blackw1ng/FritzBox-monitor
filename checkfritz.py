@@ -65,7 +65,7 @@ def readout(module, action, variable=None, show=False, numeric=True):
 
 def assemble(*args):
     # ugly hack json array constructor.
-    json_dict = "\t v: {" + ', '.join(list(args)) + "}"
+    json_dict = '\t "v": {' + ', '.join(list(args)) + "}"
     print(json_dict)
 
 
@@ -78,7 +78,7 @@ def add_device_tag(starting=False):
 
 
 def add_interface_tag(interface):
-    print('\t"interface": ' + interface + ',')
+    print('\t"interface": "' + interface + '",')
 
 
 def end_device():
