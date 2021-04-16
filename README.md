@@ -2,7 +2,6 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/blackw1ng/FritzBox-monitor/compare)
 [![made-with-python](https://img.shields.io/badge/Python-3.7%2C%203.8-green)](https://www.python.org)
 ![Python application](https://github.com/blackw1ng/FritzBox-monitor/workflows/Python%20application/badge.svg)
-[![HitCount](http://hits.dwyl.io/blackw1ng/badges.svg)](http://hits.dwyl.io/blackw1ng/badges)
 
 # FritzBox-monitor
 Monitor FritzBox metrics via a telegraf/influxdb/grafana stack that reads data from TR-064
@@ -75,4 +74,4 @@ FritzBoxShell did not completely fetch all the information available, as describ
 * Integrate [telegraf-fritzbox.conf](telegraf-fritzbox.conf) into server grafana installation
   * Test the config: `telegraf --filter inputs.exec --test`
   * Restart grafana, and start collecting data  
-* Add [grafana-fritzbox-dashboard.json] to your server grafana installation
+* Add [grafana-fritzbox-dashboard.json](grafana-fritzbox-dashboard.json) to your server grafana installation
